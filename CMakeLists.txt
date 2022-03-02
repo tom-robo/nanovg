@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.19.0)
+project(nanovg VERSION 1.0.0 DESCRIPTION "Accelerated AKAZE library with cuda" LANGUAGES CXX CUDA)
+
+add_library(${PROJECT_NAME} SHARED
+    src/nanovg.c)
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC . 
+    PUBLIC src)
+
+
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC ${OpenCV_LIBS})
+    
+target_link_libraries(${PROJECT_NAME})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES 
+    VERSION ${PROJECT_VERSION})
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CUDA_STANDARD 14)
+set(CMAKE_CUDA_STANDARD_REQUIRED TRUE)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
+set(CMAKE_CUDA_ARCHITECTURES 70 72)
